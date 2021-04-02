@@ -122,7 +122,7 @@ describe('cartMapper()', () => {
     expect(cartMapper([game])).toStrictEqual([
       {
         id: '1',
-        img: 'http://localhost:1337/image.jpg',
+        img: 'http://10.201.84.10:1337/image.jpg',
         title: 'game',
         price: '$10.00'
       }
