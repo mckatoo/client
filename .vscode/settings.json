@@ -6,5 +6,6 @@
   "window.zoomLevel": 0,
   "autoimport.semicolon": false,
   "importSorter.importStringConfiguration.hasSemicolon": false,
-  "importSorter.sortConfiguration.removeUnusedDefaultImports": true
+  "importSorter.sortConfiguration.removeUnusedDefaultImports": true,
+  "importSorter.importStringConfiguration.numberOfEmptyLinesAfterAllImports": 1
 }
