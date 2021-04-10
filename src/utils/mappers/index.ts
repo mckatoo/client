@@ -9,7 +9,7 @@ export const bannerMapper = (banners: QueryHome_banners[]) => {
   return banners.map((banner) => {
     return banner
       ? {
-          img: `http://10.201.84.10:1337${banner.image?.url}`,
+          img: `${process.env.NEXT_PUBLIC_API_URL}${banner.image?.url}`,
           title: banner.title,
           subtitle: banner.subtitle,
           buttonLabel: banner.button?.label,
@@ -31,7 +31,7 @@ export const gamesMapper = (games: QueryGames_games[] | null | undefined) => {
         title: game.name,
         slug: game.slug,
         developer: game.developers[0].name,
-        img: `http://10.201.84.10:1337${game.cover?.url}`,
+        img: `${process.env.NEXT_PUBLIC_API_URL}${game.cover?.url}`,
         price: game.price
       }))
     : []
@@ -44,8 +44,8 @@ export const highlightMapper = (
     ? {
         title: highlight.title,
         subtitle: highlight.subtitle,
-        backgroundImage: `http://10.201.84.10:1337${highlight.background?.url}`,
-        floatImage: `http://10.201.84.10:1337${highlight.floatImage?.url}`,
+        backgroundImage: `${process.env.NEXT_PUBLIC_API_URL}${highlight.background?.url}`,
+        floatImage: `${process.env.NEXT_PUBLIC_API_URL}${highlight.floatImage?.url}`,
         buttonLabel: highlight.buttonLabel,
         buttonLink: highlight.buttonLink,
         alignment: highlight.alignment
@@ -57,7 +57,7 @@ export const cartMapper = (games: QueryGames_games[] | undefined) => {
   return games
     ? games.map((game) => ({
         id: game.id,
-        img: `http://10.201.84.10:1337${game.cover?.url}`,
+        img: `${process.env.NEXT_PUBLIC_API_URL}${game.cover?.url}`,
         price: formatPrice(game.price),
         title: game.name
       }))

@@ -44,13 +44,13 @@ export const gamesMock = {
 export const cartItems = [
   {
     id: '1',
-    img: 'http://10.201.84.10:1337/sample-game.jpg',
+    img: `${process.env.NEXT_PUBLIC_API_URL}/sample-game.jpg`,
     price: '$10.50',
     title: 'Sample Game'
   },
   {
     id: '2',
-    img: 'http://10.201.84.10:1337/sample-game.jpg',
+    img: `${process.env.NEXT_PUBLIC_API_URL}/sample-game.jpg`,
     price: '$10.50',
     title: 'Sample Game'
   }

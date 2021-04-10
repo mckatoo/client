@@ -29,7 +29,7 @@ describe('bannerMapper()', () => {
 
     expect(bannerMapper([banner])).toStrictEqual([
       {
-        img: 'http://10.201.84.10:1337/image.jpg',
+        img: `${process.env.NEXT_PUBLIC_API_URL}/image.jpg`,
         title: 'Banner title',
         subtitle: 'Banner subtitle',
         buttonLabel: 'Banner button',
@@ -65,7 +65,7 @@ describe('gamesMapper()', () => {
         title: 'Game name',
         slug: 'game_slug',
         developer: game.developers[0].name,
-        img: 'http://10.201.84.10:1337/game_url',
+        img: `${process.env.NEXT_PUBLIC_API_URL}/game_url`,
         price: 350.0
       }
     ])
@@ -95,8 +95,8 @@ describe('highlightMapper()', () => {
     expect(highlightMapper(highlight)).toStrictEqual({
       title: 'HighLight title',
       subtitle: 'HighLight subtitle',
-      backgroundImage: 'http://10.201.84.10:1337/Highlight url',
-      floatImage: 'http://10.201.84.10:1337/FloatImage url',
+      backgroundImage: `${process.env.NEXT_PUBLIC_API_URL}/Highlight url`,
+      floatImage: `${process.env.NEXT_PUBLIC_API_URL}/FloatImage url`,
       buttonLabel: 'Button Label',
       buttonLink: 'Button Link',
       alignment: 'left'
@@ -122,7 +122,7 @@ describe('cartMapper()', () => {
     expect(cartMapper([game])).toStrictEqual([
       {
         id: '1',
-        img: 'http://10.201.84.10:1337/image.jpg',
+        img: `${process.env.NEXT_PUBLIC_API_URL}/image.jpg`,
         title: 'game',
         price: '$10.00'
       }
