@@ -7,5 +7,21 @@
   "autoimport.semicolon": false,
   "importSorter.importStringConfiguration.hasSemicolon": false,
   "importSorter.sortConfiguration.removeUnusedDefaultImports": true,
-  "importSorter.importStringConfiguration.numberOfEmptyLinesAfterAllImports": 1
+  "importSorter.importStringConfiguration.numberOfEmptyLinesAfterAllImports": 1,
+  "importSorter.sortConfiguration.customOrderingRules.rules": [
+    {
+      "type": "importMember",
+      "regex": "^$",
+      "orderLevel": 10,
+      "disableSort": true
+    },
+    {
+      "regex": "^[@]",
+      "orderLevel": 30
+    },
+    {
+      "regex": "^[.]",
+      "orderLevel": 40
+    }
+  ]
 }
