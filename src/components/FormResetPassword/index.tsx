@@ -1,4 +1,4 @@
-import { Email, ErrorOutline } from '@styled-icons/material-outlined'
+import { ErrorOutline, Lock } from '@styled-icons/material-outlined'
 import Button from 'components/Button'
 import { FormError, FormLoading, FormWrapper } from 'components/Form'
 import TextField from 'components/TextField'
@@ -13,7 +13,7 @@ const FormResetPassword = () => {
   const [values, setValues] = useState({ password: '', confirm_password: '' })
   const [loading, setLoading] = useState(false)
   const routes = useRouter()
-  const { push, query } = routes
+  const { query } = routes
 
   const handleInput = (field: string, value: string) => {
     setValues((s) => ({ ...s, [field]: value }))
@@ -33,19 +33,35 @@ const FormResetPassword = () => {
 
     setFieldError({})
 
-    const result = await signIn('credentials', {
-      ...values,
-      redirect: false,
-      callbackUrl: `${window.location.origin}${query?.callbackUrl || ''}`
-    })
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/reset-password`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          password: values.password,
+          passwordConfirmation: values.confirm_password,
+          code: query.code
+        })
+      }
+    )
 
-    if (result?.url) {
-      return push(result?.url)
-    }
-
+    const data = await response.json()
     setLoading(false)
 
-    setFormError('username or password is invalid')
+    if (data.error) {
+      setFormError(data.message[0].messages[0].message)
+      setLoading(false)
+    } else {
+      signIn('credentials', {
+        email: data.user.email,
+        password: values.password,
+        callbackUrl: '/'
+      })
+      setLoading(true)
+    }
   }
 
   return (
@@ -58,12 +74,20 @@ const FormResetPassword = () => {
       )}
       <form onSubmit={handleSubmit}>
         <TextField
-          name="email"
-          placeholder="Email"
-          type="email"
-          error={fieldError?.email}
-          onInputChange={(v) => handleInput('email', v)}
-          icon={<Email />}
+          name="password"
+          placeholder="Password"
+          type="password"
+          error={fieldError?.password}
+          onInputChange={(v) => handleInput('password', v)}
+          icon={<Lock />}
+        />
+        <TextField
+          name="confirm_password"
+          placeholder="Confirm password"
+          type="password"
+          error={fieldError?.confirm_password}
+          onInputChange={(v) => handleInput('confirm_password', v)}
+          icon={<Lock />}
         />
 
         <Button type="submit" size="large" fullWidth disabled={loading}>

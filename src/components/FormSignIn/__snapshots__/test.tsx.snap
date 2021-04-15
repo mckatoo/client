@@ -170,7 +170,7 @@ exports[`<FormSignIn /> should render the form 1`] = `
               class="c5"
               name="email"
               placeholder="Email"
-              type="email"
+              type="text"
               value=""
             />
           </div>
