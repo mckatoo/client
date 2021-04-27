@@ -1,9 +1,10 @@
+import 'session.mock'
 import 'match-media-mock'
 
 import { render, screen } from 'utils/test-utils'
-import items from './mock'
 
-import GameCardSlider from '.'
+import GameCardSlider from './'
+import items from './mock'
 
 describe('<GameSlider />', () => {
   it('should render with 4 active items', () => {

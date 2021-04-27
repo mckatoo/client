@@ -1,11 +1,11 @@
+import 'session.mock'
 import 'match-media-mock'
-
-import { render, screen } from 'utils/test-utils'
-
-import Wishlist from '.'
 
 import gamesMock from 'components/GameCardSlider/mock'
 import highlightMock from 'components/Highlight/mock'
+import { render, screen } from 'utils/test-utils'
+
+import Wishlist from './'
 
 const props = {
   games: gamesMock,

@@ -1,11 +1,11 @@
+import 'session.mock'
 import 'match-media-mock'
-
-import { render, screen } from 'utils/test-utils'
 
 import gamesMock from 'components/GameCardSlider/mock'
 import highlightMock from 'components/Highlight/mock'
+import { render, screen } from 'utils/test-utils'
 
-import Showcase from '.'
+import Showcase from './'
 
 const props = {
   title: 'Most Popular',
