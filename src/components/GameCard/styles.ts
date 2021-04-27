@@ -76,17 +76,19 @@ export const Developer = styled.h4`
 `
 
 export const FavButton = styled.div`
-  ${({ theme }) => css`
-    color: ${theme.colors.primary};
-    position: absolute;
-    right: 0;
-    top: -0.5rem;
-    cursor: pointer;
+  Button {
+    ${({ theme }) => css`
+      color: ${theme.colors.primary};
+      position: absolute;
+      right: -1rem;
+      top: -0.5rem;
+      cursor: pointer;
 
-    svg {
-      width: 2.5rem;
-    }
-  `}
+      svg {
+        width: 2.5rem;
+      }
+    `}
+  }
 `
 
 export const BuyBox = styled.div`
