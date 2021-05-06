@@ -20,11 +20,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-merge": "lint-staged",
+      "pre-push": "lint-staged"
     }
   },
   "lint-staged": {
     "src/**/*": [
+      "yarn typecheck",
       "yarn lint --fix",
       "yarn test --findRelatedTests --bail"
     ]
