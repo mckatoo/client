@@ -1,15 +1,11 @@
 import gql from 'graphql-tag'
 
 export const QUERY_PROFILE_ME = gql`
-  query QueryProfileMe {
-    me {
+  query QueryProfileMe($identifier: ID!) {
+    user(id: $identifier) {
       id
-      username
       email
-      role {
-        name
-      }
-      blocked
+      username
     }
   }
 `
