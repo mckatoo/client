@@ -17,7 +17,7 @@ export const createPaymentIntent = async ({
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ items: [{ cart: items }] })
+      body: JSON.stringify({ cart: items })
     }
   )
 
