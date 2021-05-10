@@ -25,6 +25,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
   useEffect(() => {
     async function setPaymentMode () {
       if (items.length) {
+        setFreeGames(false)
         const data = await createPaymentIntent({
           items,
           token: session.jwt
@@ -32,7 +33,6 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
 
         if (data.freeGames) {
           setFreeGames(true)
-          console.log(data.freeGames)
           return
         }
 
@@ -42,19 +42,9 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
         }
 
         setClientSecret(data.client_secret)
-        console.log({ clientSecret })
       }
     }
     setPaymentMode()
-    /*
-    bater na API /orders/create-payment-intent
-    enviar os items do carrinho
-    se  receber freeGames: true => setFreeGames(true)
-    faço o fluxo de jogo gratuito
-    se eu receber um erro então setError(erro)
-    senão o paymentIntent foi válido
-    setClientSecret
-     */
   }, [items, session])
 
   const handleChange = async (event: StripeCardElementChangeEvent) => {
@@ -69,17 +59,21 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
           Payment
         </Heading>
 
-        <CardElement
-          options={{
-            hidePostalCode: true,
-            style: {
-              base: {
-                fontSize: '16px'
+        {freeGames ? (
+          <S.FreeGames>Only free games, click buy and enjoy!</S.FreeGames>
+        ) : (
+          <CardElement
+            options={{
+              hidePostalCode: true,
+              style: {
+                base: {
+                  fontSize: '16px'
+                }
               }
-            }
-          }}
-          onChange={handleChange}
-        />
+            }}
+            onChange={handleChange}
+          />
+        )}
 
         {error && (
           <S.Error>
@@ -95,7 +89,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
         <Button
           fullWidth
           icon={<ShoppingCart />}
-          disabled={disabled || !!error}
+          disabled={!freeGames && (disabled || !!error)}
         >
           Buy now
         </Button>
