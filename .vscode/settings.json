@@ -3,7 +3,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "window.zoomLevel": 0,
+  "window.zoomLevel": -1,
   "autoimport.semicolon": false,
   "importSorter.importStringConfiguration.hasSemicolon": false,
   "importSorter.sortConfiguration.removeUnusedDefaultImports": true,
