@@ -4,7 +4,7 @@ module.exports = {
     '/node_modules/',
     '/.next/'
   ],
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: [
     'src/**/*.ts(x)?',
     '!src/**/stories.tsx',
