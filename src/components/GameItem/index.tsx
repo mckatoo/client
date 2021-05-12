@@ -8,8 +8,8 @@ import * as S from './styles'
 
 export type PaymentInfoProps = {
   number: string
-  flag: string
-  img: string
+  flag: string | null
+  img: string | null
   purchaseDate: string
 }
 
@@ -45,7 +45,7 @@ const GameItem = ({
             {!!downloadLink && (
               <S.DownloadLink
                 href={downloadLink}
-                target="_blank"
+                target='_blank'
                 aria-label={`Get ${title} here`}
               >
                 <Download size={22} />
@@ -57,8 +57,8 @@ const GameItem = ({
             {isInCart(id) && (
               <S.Remove onClick={() => removeFromCart(id)}>
                 <Button
-                  icon={<RemoveShoppingCart aria-label="Remove" />}
-                  size="small"
+                  icon={<RemoveShoppingCart aria-label='Remove' />}
+                  size='small'
                 />
               </S.Remove>
             )}
@@ -71,7 +71,9 @@ const GameItem = ({
           <p>{paymentInfo.purchaseDate}</p>
           <S.CardInfo>
             <span>{paymentInfo.number}</span>
-            <img src={paymentInfo.img} alt={paymentInfo.flag} />
+            {!!paymentInfo.img && !!paymentInfo.flag && (
+              <img src={paymentInfo.img} alt={paymentInfo.flag} />
+            )}
           </S.CardInfo>
         </S.PaymentContent>
       )}
