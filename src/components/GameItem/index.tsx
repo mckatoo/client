@@ -45,7 +45,7 @@ const GameItem = ({
             {!!downloadLink && (
               <S.DownloadLink
                 href={downloadLink}
-                target='_blank'
+                target="_blank"
                 aria-label={`Get ${title} here`}
               >
                 <Download size={22} />
@@ -57,8 +57,8 @@ const GameItem = ({
             {isInCart(id) && (
               <S.Remove onClick={() => removeFromCart(id)}>
                 <Button
-                  icon={<RemoveShoppingCart aria-label='Remove' />}
-                  size='small'
+                  icon={<RemoveShoppingCart aria-label="Remove" />}
+                  size="small"
                 />
               </S.Remove>
             )}

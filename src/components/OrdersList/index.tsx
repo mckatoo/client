@@ -15,20 +15,24 @@ export type OrdersListProps = {
 
 const OrdersList = ({ items = [] }: OrdersListProps) => (
   <S.Wrapper>
-    <Heading lineBottom lineColor='primary' color='black' size='small'>
+    <Heading lineBottom lineColor="primary" color="black" size="small">
       My orders
     </Heading>
 
     {items.length ? (
-      items.map(order => {
-        return order.games.map(game => (
-           <GameItem key={`${order.id}_${game.id}`} {...game} paymentInfo={order.paymentInfo} />
+      items.map((order) => {
+        return order.games.map((game) => (
+          <GameItem
+            key={`${order.id}_${game.id}`}
+            {...game}
+            paymentInfo={order.paymentInfo}
+          />
         ))
       })
     ) : (
       <Empty
-        title='You have no orders yet'
-        description='Go back to the store and explore great games and offers'
+        title="You have no orders yet"
+        description="Go back to the store and explore great games and offers"
         hasLink
       />
     )}

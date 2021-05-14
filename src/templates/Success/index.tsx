@@ -26,7 +26,7 @@ const Success = ({
 
   useEffect(() => {
     clearCart()
-  }, [])
+  })
 
   return (
     <Base>
@@ -41,7 +41,7 @@ const Success = ({
           <S.Text>
             Wait for your payment details by email. Your game is now available
             for download inside your{' '}
-            <Link href='/profile/orders'>
+            <Link href="/profile/orders">
               <a>Orders List</a>
             </Link>
             . Enjoy!

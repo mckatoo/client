@@ -21,15 +21,15 @@ const props = {
 
 jest.mock('templates/Base', () => ({
   __esModule: true,
-  default: function Mock ({ children }: { children: React.ReactNode }) {
-    return <div data-testid='Mock Base'>{children}</div>
+  default: function Mock({ children }: { children: React.ReactNode }) {
+    return <div data-testid="Mock Base">{children}</div>
   }
 }))
 
 jest.mock('components/Showcase', () => ({
   __esModule: true,
-  default: function Mock () {
-    return <div data-testid='Mock Showcase' />
+  default: function Mock() {
+    return <div data-testid="Mock Showcase" />
   }
 }))
 
@@ -42,15 +42,15 @@ jest.mock('components/CartList', () => ({
 
 jest.mock('components/PaymentForm', () => ({
   __esModule: true,
-  default: function Mock () {
-    return <div data-testid='Mock PaymentForm' />
+  default: function Mock() {
+    return <div data-testid="Mock PaymentForm" />
   }
 }))
 
 jest.mock('components/Empty', () => ({
   __esModule: true,
-  default: function Mock () {
-    return <div data-testid='Mock Empty' />
+  default: function Mock() {
+    return <div data-testid="Mock Empty" />
   }
 }))
 

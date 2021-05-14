@@ -29,7 +29,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
   const elements = useElements()
 
   useEffect(() => {
-    async function setPaymentMode () {
+    async function setPaymentMode() {
       if (items.length) {
         setFreeGames(false)
         const data = await createPaymentIntent({
@@ -99,7 +99,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
     <S.Wrapper>
       <form onSubmit={handleSubmit}>
         <S.Body>
-          <Heading color='black' size='small' lineBottom>
+          <Heading color="black" size="small" lineBottom>
             Payment
           </Heading>
 
@@ -127,7 +127,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
           )}
         </S.Body>
         <S.Footer>
-          <Button as='a' fullWidth minimal>
+          <Button as="a" fullWidth minimal>
             Continue shopping
           </Button>
           <Button

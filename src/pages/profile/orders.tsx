@@ -10,7 +10,7 @@ import { initializeApollo } from 'utils/apollo'
 import { ordersMapper } from 'utils/mappers'
 import protectedRoutes from 'utils/protected-routes'
 
-export default function Orders ({ items }: OrdersListProps) {
+export default function Orders({ items }: OrdersListProps) {
   return (
     <Profile>
       <OrdersList items={items} />
@@ -18,7 +18,7 @@ export default function Orders ({ items }: OrdersListProps) {
   )
 }
 
-export async function getServerSideProps (context: GetServerSidePropsContext) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await protectedRoutes(context)
   const apolloClient = initializeApollo(null, session)
 

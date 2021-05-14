@@ -15,14 +15,14 @@ useRouter.mockImplementation(() => ({
 
 jest.mock('next/link', () => ({
   __esModule: true,
-  default: function Mock ({ children }: { children: React.ReactNode }) {
+  default: function Mock({ children }: { children: React.ReactNode }) {
     return <div>{children}</div>
   }
 }))
 
 jest.mock('@stripe/react-stripe-js', () => ({
-  CardElement: function Mock ({ children }: { children: React.ReactNode }) {
-    return <div data-testid='Mock CardElements'>{children}</div>
+  CardElement: function Mock({ children }: { children: React.ReactNode }) {
+    return <div data-testid="Mock CardElements">{children}</div>
   },
   useStripe: jest.fn().mockReturnValue({
     confirmCardPayment: jest.fn().mockResolvedValue({
