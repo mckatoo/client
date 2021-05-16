@@ -1,18 +1,17 @@
-import { ParsedUrlQueryInput } from 'querystring'
-import { useRouter } from 'next/router'
-
-import { useQueryGames } from 'graphql/queries/games'
-import { parseQueryStringToFilter, parseQueryStringToWhere } from 'utils/filter'
-
-import Base from 'templates/Base'
-import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
-
+import Empty from 'components/Empty'
 import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar'
 import GameCard from 'components/GameCard'
 import { Grid } from 'components/Grid'
+import { useQueryGames } from 'graphql/queries/games'
+import { useRouter } from 'next/router'
+import { ParsedUrlQueryInput } from 'querystring'
+import Base from 'templates/Base'
+import { parseQueryStringToFilter, parseQueryStringToWhere } from 'utils/filter'
+import { getImageUrl } from 'utils/getImageUrl'
+
+import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
 
 import * as S from './styles'
-import Empty from 'components/Empty'
 
 export type GamesTemplateProps = {
   filterItems: ItemProps[]
@@ -71,7 +70,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
                     title={game.name}
                     slug={game.slug}
                     developer={game.developers[0].name}
-                    img={`${process.env.NEXT_PUBLIC_API_URL}${game.cover!.url}`}
+                    img={`${getImageUrl(game.cover!.url)}`}
                     price={game.price}
                   />
                 ))}

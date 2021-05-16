@@ -1,6 +1,6 @@
 import { render, screen } from 'utils/test-utils'
 
-import Highlight from '.'
+import Highlight from './'
 import * as S from './styles'
 
 const props = {
@@ -29,7 +29,7 @@ describe('<Highlight />', () => {
   })
 
   it('should render background image', () => {
-    const { container } = render(<Highlight {...props} />)
+    render(<Highlight {...props} />)
 
     expect(
       screen.getAllByRole('img', { name: props.title })[0]
@@ -37,12 +37,11 @@ describe('<Highlight />', () => {
   })
 
   it('should render float image', () => {
-    render(<Highlight {...props} floatImage='/float-image.png' />)
+    render(<Highlight {...props} floatImage="/float-image.png" />)
 
-    expect(screen.getAllByRole('img', { name: props.title })[1]).toHaveAttribute(
-      'src',
-      '/float-image.png'
-    )
+    expect(
+      screen.getAllByRole('img', { name: props.title })[1]
+    ).toHaveAttribute('src', '/float-image.png')
   })
 
   it('should render align right by default', () => {
@@ -59,7 +58,7 @@ describe('<Highlight />', () => {
   })
 
   it('should render align left by default', () => {
-    const { container } = render(<Highlight {...props} alignment='left' />)
+    const { container } = render(<Highlight {...props} alignment="left" />)
 
     expect(container.firstChild).toHaveStyleRule(
       'grid-template-areas',
