@@ -22,13 +22,8 @@ export const ImageBox = styled.div`
     flex-shrink: 0;
     margin-right: 1.2rem;
     width: 9.6rem;
-    height: 5.6rem;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    min-height: 5.6rem;
+    position: relative;
 
     ${media.greaterThan('medium')`
       margin-right: ${theme.spacings.xsmall};
@@ -108,9 +103,14 @@ export const CardInfo = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
+    position: relative;
+
+    span {
+      margin-right: ${theme.spacings.xxsmall};
+    }
 
     img {
-      margin-left: ${theme.spacings.xxsmall};
+      object-fit: contain;
     }
 
     ${media.lessThan('medium')`

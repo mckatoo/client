@@ -1,5 +1,6 @@
 import Button from 'components/Button'
 import { useCart } from 'hooks/use-cart'
+import Image from 'next/image'
 
 import { Download } from '@styled-icons/boxicons-solid/Download'
 import { RemoveShoppingCart } from '@styled-icons/material-outlined'
@@ -36,7 +37,7 @@ const GameItem = ({
     <S.Wrapper>
       <S.GameContent>
         <S.ImageBox>
-          <img src={img} alt={title} />
+          <Image src={img} alt={title} layout="fill" objectFit="cover" />
         </S.ImageBox>
 
         <S.Content>
@@ -72,7 +73,12 @@ const GameItem = ({
           <S.CardInfo>
             <span>{paymentInfo.number}</span>
             {!!paymentInfo.img && !!paymentInfo.flag && (
-              <img src={paymentInfo.img} alt={paymentInfo.flag} />
+              <Image
+                src={paymentInfo.img}
+                alt={paymentInfo.flag}
+                width={38}
+                height={24}
+              />
             )}
           </S.CardInfo>
         </S.PaymentContent>

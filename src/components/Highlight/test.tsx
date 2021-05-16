@@ -31,15 +31,15 @@ describe('<Highlight />', () => {
   it('should render background image', () => {
     const { container } = render(<Highlight {...props} />)
 
-    expect(container.firstChild).toHaveStyle({
-      backgroundImage: `url(${props.backgroundImage})`
-    })
+    expect(
+      screen.getAllByRole('img', { name: props.title })[0]
+    ).toHaveAttribute('src', props.backgroundImage)
   })
 
   it('should render float image', () => {
-    render(<Highlight {...props} floatImage="/float-image.png" />)
+    render(<Highlight {...props} floatImage='/float-image.png' />)
 
-    expect(screen.getByRole('img', { name: props.title })).toHaveAttribute(
+    expect(screen.getAllByRole('img', { name: props.title })[1]).toHaveAttribute(
       'src',
       '/float-image.png'
     )
@@ -59,7 +59,7 @@ describe('<Highlight />', () => {
   })
 
   it('should render align left by default', () => {
-    const { container } = render(<Highlight {...props} alignment="left" />)
+    const { container } = render(<Highlight {...props} alignment='left' />)
 
     expect(container.firstChild).toHaveStyleRule(
       'grid-template-areas',
