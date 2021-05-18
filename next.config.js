@@ -9,5 +9,8 @@ module.exports = withPWA({
   },
   images: {
     domains: ['10.201.84.10', 'res.cloudinary.com']
+  },
+  future: {
+    webpack5: true
   }
 })

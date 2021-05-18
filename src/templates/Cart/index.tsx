@@ -6,7 +6,7 @@ import Heading from 'components/Heading'
 import { HighlightProps } from 'components/Highlight'
 import PaymentForm from 'components/PaymentForm'
 import Showcase from 'components/Showcase'
-import { Session } from 'next-auth/client'
+import { Session } from 'next-auth'
 import Base from 'templates/Base'
 
 import { Elements } from '@stripe/react-stripe-js'
