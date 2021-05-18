@@ -1,23 +1,22 @@
-import { useRouter } from 'next/router'
-import { initializeApollo } from 'utils/apollo'
-
-import Game, { GameTemplateProps } from 'templates/Game'
-
-import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
-import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from 'graphql/queries/games'
 import {
   QueryGameBySlug,
   QueryGameBySlugVariables
 } from 'graphql/generated/QueryGameBySlug'
-import { GetStaticProps } from 'next'
+import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
 import { QueryRecommended } from 'graphql/generated/QueryRecommended'
-import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
-import { gamesMapper, highlightMapper } from 'utils/mappers'
 import {
   QueryUpcoming,
   QueryUpcomingVariables
 } from 'graphql/generated/QueryUpcoming'
+import { QUERY_GAME_BY_SLUG, QUERY_GAMES } from 'graphql/queries/games'
+import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
 import { QUERY_UPCOMING } from 'graphql/queries/upcoming'
+import { GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
+import Game, { GameTemplateProps } from 'templates/Game'
+import { initializeApollo } from 'utils/apollo'
+import { getImageUrl } from 'utils/getImageUrl'
+import { gamesMapper, highlightMapper } from 'utils/mappers'
 
 const apolloClient = initializeApollo()
 
@@ -78,7 +77,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     revalidate: 60,
     props: {
-      cover: `${process.env.NEXT_PUBLIC_API_URL}${game.cover?.src}`,
+      slug: params?.slug,
+      cover: `${getImageUrl(game.cover?.src)}`,
       gameInfo: {
         id: game.id,
         title: game.name,
@@ -86,7 +86,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         description: game.short_description
       },
       gallery: game.gallery.map((image) => ({
-        src: `${process.env.NEXT_PUBLIC_API_URL}${image.src}`,
+        src: `${getImageUrl(image.src)}`,
         label: image.label
       })),
       description: game.description,

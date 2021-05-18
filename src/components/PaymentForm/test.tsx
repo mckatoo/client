@@ -1,6 +1,6 @@
 import items from 'components/CartList/mock'
 import { CartContextData, CartContextDefaultValues } from 'hooks/use-cart'
-import { Session } from 'next-auth/client'
+import { Session } from 'next-auth'
 import * as stripeMethods from 'utils/stripe/methods'
 import { render, screen, waitFor } from 'utils/test-utils'
 

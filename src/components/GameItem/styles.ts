@@ -106,7 +106,7 @@ export const CardInfo = styled.div`
     position: relative;
 
     img {
-      margin-left: ${theme.spacings.xxsmall};
+      object-fit: contain;
     }
 
     ${media.lessThan('medium')`

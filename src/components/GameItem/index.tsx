@@ -76,8 +76,8 @@ const GameItem = ({
               <Image
                 src={paymentInfo.img}
                 alt={paymentInfo.flag}
-                layout="fill"
-                objectFit="cover"
+                width={38}
+                height={24}
               />
             )}
           </S.CardInfo>
