@@ -26,7 +26,7 @@ const Success = ({
 
   useEffect(() => {
     clearCart()
-  })
+  }, [clearCart])
 
   return (
     <Base>
