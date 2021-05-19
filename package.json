@@ -21,14 +21,15 @@
   "husky": {
     "hooks": {
       "pre-merge": "lint-staged",
-      "pre-push": "lint-staged"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
     "src/**/*": [
       "yarn typecheck",
       "yarn lint --fix",
-      "yarn test --findRelatedTests --bail"
+      "yarn test --findRelatedTests --bail",
+      "yarn build"
     ]
   },
   "dependencies": {
